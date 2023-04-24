@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:section10_quizler_modularising_and_organising_flutter_code/question.dart';
 
 main() => runApp(const Quizzler());
 
@@ -31,13 +32,11 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
 
-  List<String> questions = [
-    'Você pode levar uma vaca para baixo, mas não para cima.',
-    'Aproximadamente um quarto dos ossos humanos estão nos pés.',
-    'O sangue de uma lesma é verde.',
+  List<Question> bankQuestion = [
+    Question(questionText: 'Você pode levar uma vaca para baixo, mas não para cima.', questionAnswer: false),
+    Question(questionText: 'Aproximadamente um quarto dos ossos humanos estão nos pés.', questionAnswer: true),
+    Question(questionText: 'O sangue de uma lesma é verde.', questionAnswer: true),
   ];
-
-  List<bool> answers = [false, true, true];
 
   int questionNumber = 0;
 
@@ -53,7 +52,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10),
             child: Center(
               child: Text(
-                questions[questionNumber],
+                bankQuestion[questionNumber].questionText,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 25,
@@ -68,7 +67,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(15),
             child: ElevatedButton(
               onPressed: () {
-                bool correctAnswer = answers[questionNumber];
+                bool correctAnswer = bankQuestion[questionNumber].questionAnswer;
 
                 if (correctAnswer == true) {
                   print("A resposta está certa");
@@ -98,7 +97,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(15),
             child: ElevatedButton(
               onPressed: () {
-                bool correctAnswer = answers[questionNumber];
+                bool correctAnswer = bankQuestion[questionNumber].questionAnswer;
                 if (correctAnswer == false) {
                   print("A resposta está certa");
                 } else {
