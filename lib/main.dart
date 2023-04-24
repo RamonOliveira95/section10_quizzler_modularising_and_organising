@@ -29,21 +29,33 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
+  List<Icon> scoreKeeper = [];
+
+  List<String> questions = [
+    'Você pode levar uma vaca para baixo, mas não para cima.',
+    'Aproximadamente um quarto dos ossos humanos estão nos pés.',
+    'O sangue de uma lesma é verde.',
+  ];
+
+  List<bool> answers = [false, true, true];
+
+  int questionNumber = 0;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const Expanded(
+        Expanded(
           flex: 5,
           child: Padding(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Center(
               child: Text(
-                'Aqui é onde irá aparecer a questão',
+                questions[questionNumber],
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 25,
                   color: Colors.white,
                 ),
@@ -55,7 +67,19 @@ class _QuizPageState extends State<QuizPage> {
           child: Padding(
             padding: const EdgeInsets.all(15),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                bool correctAnswer = answers[questionNumber];
+
+                if (correctAnswer == true) {
+                  print("A resposta está certa");
+                } else {
+                  print("A resposta está errada");
+                }
+
+                setState(() {
+                  questionNumber++;
+                });
+              },
               style: const ButtonStyle(
                 backgroundColor: MaterialStatePropertyAll<Color>(Colors.green),
               ),
@@ -73,7 +97,18 @@ class _QuizPageState extends State<QuizPage> {
           child: Padding(
             padding: const EdgeInsets.all(15),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                bool correctAnswer = answers[questionNumber];
+                if (correctAnswer == false) {
+                  print("A resposta está certa");
+                } else {
+                  print("A resposta está errada");
+                }
+
+                setState(() {
+                  questionNumber++;
+                });
+              },
               style: const ButtonStyle(
                 backgroundColor: MaterialStatePropertyAll<Color>(Colors.red),
               ),
@@ -87,6 +122,9 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
+        Row(
+          children: scoreKeeper,
+        )
       ],
     );
   }
