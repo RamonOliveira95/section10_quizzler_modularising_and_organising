@@ -33,7 +33,6 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
   
-  int questionNumber = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +46,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10),
             child: Center(
               child: Text(
-                quizBrain.bankQuestion[questionNumber].questionText,
+                quizBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 25,
@@ -63,7 +62,7 @@ class _QuizPageState extends State<QuizPage> {
             child: ElevatedButton(
               onPressed: () {
                 bool correctAnswer =
-                    quizBrain.bankQuestion[questionNumber].questionAnswer;
+                    quizBrain.getQuestionAnswer();
 
                 if (correctAnswer == true) {
                   print("A resposta está certa");
@@ -72,7 +71,7 @@ class _QuizPageState extends State<QuizPage> {
                 }
 
                 setState(() {
-                  questionNumber++;
+                  quizBrain.nextQuestion();
                 });
               },
               style: const ButtonStyle(
@@ -94,7 +93,7 @@ class _QuizPageState extends State<QuizPage> {
             child: ElevatedButton(
               onPressed: () {
                 bool correctAnswer =
-                    quizBrain.bankQuestion[questionNumber].questionAnswer;
+                    quizBrain.getQuestionAnswer();
                 if (correctAnswer == false) {
                   print("A resposta está certa");
                 } else {
@@ -102,7 +101,7 @@ class _QuizPageState extends State<QuizPage> {
                 }
 
                 setState(() {
-                  questionNumber++;
+                  quizBrain.nextQuestion();
                 });
               },
               style: const ButtonStyle(

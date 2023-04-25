@@ -21,3 +21,10 @@
 # AULA 4 - 1.0.3
 - Código refatorado, peguei as questões e coloquei dentro de um único arquivo chamado quiz_brain.dart;
 - Fiz as chamadas corretas da classe no main.
+
+# AULA 5 - 1.0.4
+- Deixei a lista _bankQuestion privada, adicionando um _ na frente da variável, deixando ela encapsulada;
+- Adicionado métodos para poderem ser acessado na Main, pois agora a classe é privada, então o melhor jeito de acessar os dados é através dos métodos criados para ela.
+- nextQuestion() vai comparar quantas questões ainda tem e vai mostrar a próxima ao clicar no botão de verdadeiro ou falso;
+- getQuestionText() vai pegar o texto da questão referente ao número atual;
+- getQuestionAnswer() Vai pegar a resposta referente a questão atual.
