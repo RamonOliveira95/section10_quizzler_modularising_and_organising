@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:section10_quizler_modularising_and_organising_flutter_code/question.dart';
+import 'package:section10_quizler_modularising_and_organising_flutter_code/quiz_brain.dart';
 
+QuizBrain quizBrain = QuizBrain();
 main() => runApp(const Quizzler());
 
 class Quizzler extends StatelessWidget {
@@ -31,13 +32,7 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
-
-  List<Question> bankQuestion = [
-    Question(questionText: 'Você pode levar uma vaca para baixo, mas não para cima.', questionAnswer: false),
-    Question(questionText: 'Aproximadamente um quarto dos ossos humanos estão nos pés.', questionAnswer: true),
-    Question(questionText: 'O sangue de uma lesma é verde.', questionAnswer: true),
-  ];
-
+  
   int questionNumber = 0;
 
   @override
@@ -52,7 +47,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(10),
             child: Center(
               child: Text(
-                bankQuestion[questionNumber].questionText,
+                quizBrain.bankQuestion[questionNumber].questionText,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontSize: 25,
@@ -67,7 +62,8 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(15),
             child: ElevatedButton(
               onPressed: () {
-                bool correctAnswer = bankQuestion[questionNumber].questionAnswer;
+                bool correctAnswer =
+                    quizBrain.bankQuestion[questionNumber].questionAnswer;
 
                 if (correctAnswer == true) {
                   print("A resposta está certa");
@@ -97,7 +93,8 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(15),
             child: ElevatedButton(
               onPressed: () {
-                bool correctAnswer = bankQuestion[questionNumber].questionAnswer;
+                bool correctAnswer =
+                    quizBrain.bankQuestion[questionNumber].questionAnswer;
                 if (correctAnswer == false) {
                   print("A resposta está certa");
                 } else {

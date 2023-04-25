@@ -10,10 +10,14 @@
 # AULA 2 - 1.0.1
 - Criado lista de perguntas;
 - Criado lista de respostas;
-- Adicionado o setState nas respostas para puxar a próxima da lista conforme responsido;
+- Adicionado o setState nas respostas para puxar a próxima da lista conforme respondido;
 - Adicionado print no console informando se está correto ou errado a resposta.
 
 # AULA 3 - 1.0.2
 - Criado novo arquivo question.dart, onde foi criado uma classe para buscar a pergunta e a resposta;
 - Retirado as listas de perguntas e respostas;
 - Adicionado uma unica lista que é vinculada a classe Question, e nela fica a pergunta e resposta, assim economizando linhas de código e deixando mais intuitivo.
+
+# AULA 4 - 1.0.3
+- Código refatorado, peguei as questões e coloquei dentro de um único arquivo chamado quiz_brain.dart;
+- Fiz as chamadas corretas da classe no main.
