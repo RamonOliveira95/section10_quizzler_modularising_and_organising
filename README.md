@@ -28,3 +28,8 @@
 - nextQuestion() vai comparar quantas questões ainda tem e vai mostrar a próxima ao clicar no botão de verdadeiro ou falso;
 - getQuestionText() vai pegar o texto da questão referente ao número atual;
 - getQuestionAnswer() Vai pegar a resposta referente a questão atual.
+
+# AULA 6 - 1.0.5
+- Adicionado função checkAnswer para ser chamada quando a resposta for escolhida como verdadeiro ou falso;
+- Criado o desenho do icone, vinculado a lista scoreKeeper;
+- Adicionado a função checkAnswer dentro do setState para atualizar o icone na parte inferior da tela.

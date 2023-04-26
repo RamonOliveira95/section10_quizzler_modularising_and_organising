@@ -3,7 +3,7 @@ import 'package:section10_quizler_modularising_and_organising_flutter_code/quest
 class QuizBrain {
   int _questionNumber = 0;
 
-  List<Question> _bankQuestion = [
+  final List<Question> _bankQuestion = [
     Question(
         questionText: 'Some cats are actually allergic to humans',
         questionAnswer: true),

@@ -32,7 +32,28 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
-  
+
+  void checkAnswer(bool userPickedAnswer) {
+    bool correctAnswer = quizBrain.getQuestionAnswer();
+    setState(() {
+      if (userPickedAnswer == correctAnswer) {
+        scoreKeeper.add(
+          const Icon(
+            Icons.add,
+            color: Colors.green,
+          ),
+        );
+      } else {
+        scoreKeeper.add(
+          const Icon(
+            Icons.close,
+            color: Colors.red,
+          ),
+        );
+      }
+      quizBrain.nextQuestion();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,18 +82,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(15),
             child: ElevatedButton(
               onPressed: () {
-                bool correctAnswer =
-                    quizBrain.getQuestionAnswer();
-
-                if (correctAnswer == true) {
-                  print("A resposta está certa");
-                } else {
-                  print("A resposta está errada");
-                }
-
-                setState(() {
-                  quizBrain.nextQuestion();
-                });
+                checkAnswer(true);
               },
               style: const ButtonStyle(
                 backgroundColor: MaterialStatePropertyAll<Color>(Colors.green),
@@ -92,17 +102,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: const EdgeInsets.all(15),
             child: ElevatedButton(
               onPressed: () {
-                bool correctAnswer =
-                    quizBrain.getQuestionAnswer();
-                if (correctAnswer == false) {
-                  print("A resposta está certa");
-                } else {
-                  print("A resposta está errada");
-                }
-
-                setState(() {
-                  quizBrain.nextQuestion();
-                });
+                checkAnswer(false);
               },
               style: const ButtonStyle(
                 backgroundColor: MaterialStatePropertyAll<Color>(Colors.red),
