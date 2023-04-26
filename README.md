@@ -33,3 +33,12 @@
 - Adicionado função checkAnswer para ser chamada quando a resposta for escolhida como verdadeiro ou falso;
 - Criado o desenho do icone, vinculado a lista scoreKeeper;
 - Adicionado a função checkAnswer dentro do setState para atualizar o icone na parte inferior da tela.
+
+# AULA 7 (Challenge) - 1.0.6
+- Corrigi o icone de add para check, quando a resposta estiver certa;
+- Adicionado package rflutter_alert para dar um alerta quando responder a ultima questão;
+- Dentro do QuizBrain foi adicionado algumas funções;
+- isFinished para garantir que terminou todas as perguntas;
+- reset para voltar o numero da questão para 0;
+- Configurado o package rflutter_alert dentro de uma condicional para mostrar ou não o aviso e resetar o app;
+- Alterado as perguntas para PT-BR.

@@ -5,48 +5,48 @@ class QuizBrain {
 
   final List<Question> _bankQuestion = [
     Question(
-        questionText: 'Some cats are actually allergic to humans',
+        questionText: 'Alguns gatos são realmente alérgicos a humanos.',
         questionAnswer: true),
     Question(
-        questionText: 'You can lead a cow down stairs but not up stairs.',
+        questionText: 'Você pode levar uma vaca escada abaixo, mas não escada acima.',
         questionAnswer: false),
     Question(
         questionText:
-            'Approximately one quarter of human bones are in the feet.',
+            'Aproximadamente um quarto dos ossos humanos estão nos pés.',
         questionAnswer: true),
-    Question(questionText: 'A slug\'s blood is green.', questionAnswer: true),
+    Question(questionText: 'O sangue de uma lesma é verde.', questionAnswer: true),
     Question(
-        questionText: 'Buzz Aldrin\'s mother\'s maiden name was \"Moon\".',
+        questionText: 'O nome de solteira da mãe de Buzz Aldrin era "Moon".',
         questionAnswer: true),
     Question(
-        questionText: 'It is illegal to pee in the Ocean in Portugal.',
+        questionText: 'É ilegal fazer xixi no oceano em Portugal.',
         questionAnswer: true),
     Question(
         questionText:
-            'No piece of square dry paper can be folded in half more than 7 times.',
+            'Nenhum pedaço de papel seco quadrado pode ser dobrado ao meio mais de 7 vezes.',
         questionAnswer: false),
     Question(
         questionText:
-            'In London, UK, if you happen to die in the House of Parliament, you are technically entitled to a state funeral, because the building is considered too sacred a place.',
+            'Em Londres, no Reino Unido, se você morrer na Casa do Parlamento, tecnicamente tem direito a um funeral de estado, porque o prédio é considerado um local muito sagrado.',
         questionAnswer: true),
     Question(
         questionText:
-            'The loudest sound produced by any animal is 188 decibels. That animal is the African Elephant.',
+            'O som mais alto produzido por qualquer animal é de 188 decibéis. Esse animal é o elefante africano.',
         questionAnswer: false),
     Question(
         questionText:
-            'The total surface area of two human lungs is approximately 70 square metres.',
+            'A área total da superfície de dois pulmões humanos é de aproximadamente 70 metros quadrados.',
         questionAnswer: true),
     Question(
-        questionText: 'Google was originally called \"Backrub\".',
-        questionAnswer: true),
-    Question(
-        questionText:
-            'Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.',
+        questionText: 'O Google foi originalmente chamado de "Backrub".',
         questionAnswer: true),
     Question(
         questionText:
-            'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
+            'O chocolate afeta o coração e o sistema nervoso do cachorro; Algumas onças são suficientes para matar um cachorro pequeno.',
+        questionAnswer: true),
+    Question(
+        questionText:
+            'Em West Virginia, EUA, se você acidentalmente atropelar um animal com seu carro, você pode levá-lo para casa para comer.',
         questionAnswer: true),
   ];
 
@@ -63,4 +63,17 @@ class QuizBrain {
   bool getQuestionAnswer() {
     return _bankQuestion[_questionNumber].questionAnswer;
   }
+
+  bool isFinished() {
+    if(_questionNumber < _bankQuestion.length - 1){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+  void reset(){
+    _questionNumber = 0;
+  }
+
 }

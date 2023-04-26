@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:section10_quizler_modularising_and_organising_flutter_code/quiz_brain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 QuizBrain quizBrain = QuizBrain();
 main() => runApp(const Quizzler());
@@ -35,24 +36,51 @@ class _QuizPageState extends State<QuizPage> {
 
   void checkAnswer(bool userPickedAnswer) {
     bool correctAnswer = quizBrain.getQuestionAnswer();
-    setState(() {
-      if (userPickedAnswer == correctAnswer) {
-        scoreKeeper.add(
-          const Icon(
-            Icons.add,
-            color: Colors.green,
-          ),
-        );
-      } else {
-        scoreKeeper.add(
-          const Icon(
-            Icons.close,
-            color: Colors.red,
-          ),
-        );
-      }
-      quizBrain.nextQuestion();
-    });
+
+    setState(
+      () {
+        if (quizBrain.isFinished()) {
+          Alert(
+            context: context,
+            type: AlertType.error,
+            title: "ALERTA!!!",
+            desc: "Você terminou, clique em resetar para começar novamente.",
+            buttons: [
+              DialogButton(
+                child: Text(
+                  "Resetar",
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                onPressed: () {
+                  setState(() {
+                    quizBrain.reset();
+                    scoreKeeper.clear();
+                  });
+                },
+                width: 120,
+              )
+            ],
+          ).show();
+        } else {
+          if (userPickedAnswer == correctAnswer) {
+            scoreKeeper.add(
+              const Icon(
+                Icons.check,
+                color: Colors.green,
+              ),
+            );
+          } else {
+            scoreKeeper.add(
+              const Icon(
+                Icons.close,
+                color: Colors.red,
+              ),
+            );
+          }
+          quizBrain.nextQuestion();
+        }
+      },
+    );
   }
 
   @override
